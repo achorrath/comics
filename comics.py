@@ -1,3 +1,4 @@
+import browser
 import feeddata
 import dialogs
 import ui
@@ -54,7 +55,7 @@ class EntriesDataSource(object):
         entry = self.feed.entries[row]
         tableview.selected_row = -1
         if 'link' in entry:
-            panel = ui.WebView(name=self.feed.entries[row].title)
+            panel = browser.BrowserView(name=self.feed.entries[row].title)
             panel.load_url(self.feed.entries[row].link)
             root.push_view(panel)
 
@@ -217,7 +218,7 @@ class DateDataSource (object):
         section_data = self.feeddata.entries_by_date[section_key]
         entry = section_data[row]
         if 'link' in entry:
-            panel = ui.WebView(name=section_data[row].title)
+            panel = browser.BrowserView(name=section_data[row].title)
             panel.load_url(section_data[row].link)
             root.push_view(panel)
 
